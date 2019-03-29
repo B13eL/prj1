@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<form id="1" onsubmit="formSend(this); return false;">
+    <table>
+        <tr>
+            <td>Имя</td>
+            <td><input class="form_field" name="name" type="text" data-rule="required name"/></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input class="form_field" name="email" type="email" data-rule="required email"/></td>
+        </tr>
+    </table>
+    Сообщение:<br>
+    <textarea class="form_field" name="message" data-rule="required text"></textarea><br>
+    <button type="submit">Отправить</button>
+</form>
+<form id="2" onsubmit="formSend(this); return false;">
+    <table>
+        <tr>
+            <td>Имя</td>
+            <td><input class="form_field" name="name" type="text" data-rule="required name"/></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input class="form_field" name="email" type="email" data-rule="required email"/></td>
+        </tr>
+    </table>
+    Сообщение:<br>
+    <textarea class="form_field" name="message" data-rule="required text"></textarea><br>
+    <button type="submit">Отправить</button>
+</form>
+<form id="3" onsubmit="formSend(this); return false;">
+    <table>
+        <tr>
+            <td>Имя</td>
+            <td><input class="form_field" name="name" type="text" data-rule="required name"/></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input class="form_field" name="email" type="email" data-rule="required email"/></td>
+        </tr>
+    </table>
+    Сообщение:<br>
+    <textarea class="form_field" name="message" data-rule="required text"></textarea><br>
+    <button type="submit">Отправить</button>
+</form>
+
+<script>
+
+    function formSend(form) {
+        let formInfo = {
+            formName: form.id,
+            formData: {}
+        };
+        for (let x = 0; x < form.elements.length; x++) {
+            if (form.elements[x].value !== "") {
+                formInfo.formData[form.elements[x].name] = form.elements[x].value;
+            }
+        }
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://test.com", true);
+        let info = JSON.stringify(formInfo, null, '\t');
+        xhr.send(info);
+        console.log(info);
+    }
+</script>
+
+</body>
+</html>
