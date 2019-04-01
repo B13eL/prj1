@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form id="1" onsubmit="Validator(0); return false;">
+<form id="0" onsubmit="Validator(this.id); return false;">
     <table>
         <tr>
             <td>Имя</td>
@@ -21,41 +21,41 @@
     <textarea name="message" required></textarea><br>
     <button type="submit">Отправить</button>
 </form>
-<form id="2" onsubmit="Validator(1); return false;">
+<form id="1" onsubmit="Validator(this.id); return false;">
     <table>
         <tr>
             <td>Имя</td>
-            <td><input class="form_field" name="name" type="text" data-rule="required name"/></td>
+            <td><input name="name" type="text" required/></td>
         </tr>
         <tr>
             <td>Email</td>
-            <td><input class="form_field" name="email" type="email" data-rule="required email"/></td>
+            <td><input name="email" type="email" required/></td>
         </tr>
     </table>
     Сообщение:<br>
-    <textarea class="form_field" name="message" data-rule="required text"></textarea><br>
+    <textarea name="message" required></textarea><br>
     <button type="submit">Отправить</button>
 </form>
-<form id="3" onsubmit="Validator(2); return false;">
+<form id="2" onsubmit="Validator(this.id); return false;">
     <table>
         <tr>
             <td>Имя</td>
-            <td><input class="form_field" name="name" type="text" data-rule="required name"/></td>
+            <td><input name="name" type="text" required/></td>
         </tr>
         <tr>
             <td>Email</td>
-            <td><input class="form_field" name="email" type="email" data-rule="required email"/></td>
+            <td><input name="email" type="email" required/></td>
         </tr>
     </table>
     Сообщение:<br>
-    <textarea class="form_field" name="message" data-rule="required text"></textarea><br>
+    <textarea name="message" required></textarea><br>
     <button type="submit">Отправить</button>
 </form>
 <p id="demo"></p>
 
 <script>
     function Validator(id) {
-        console.log("Validator0");
+        console.log("Validator " + id);
         let inpObj = document.getElementsByTagName("form");
         if (!inpObj[id].checkValidity()) {
             document.getElementById("demo").innerHTML = inpObj[id].validationMessage;
