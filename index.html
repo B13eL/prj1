@@ -80,6 +80,7 @@
         let xhr = new XMLHttpRequest(),
             info = JSON.stringify(formInfo, null, '\t');
         xhr.open("GET", "http://test.com", true);
+        xhr.setRequestHeader("X-Auth", "123");
         xhr.send(info);
         let t1 = performance.now();
         console.log(info + "\n" + "Time: " + (t1 - t0))
