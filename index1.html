@@ -10,45 +10,45 @@
     <table>
         <tr>
             <td>Имя</td>
-            <td><input name="name" type="text" required/></td>
+            <td><input name="name" type="text"/></td>
         </tr>
         <tr>
             <td>Email</td>
-            <td><input name="email" type="email" required/></td>
+            <td><input name="email" type="email"/></td>
         </tr>
     </table>
     Сообщение:<br>
-    <textarea name="message" required></textarea><br>
+    <textarea name="message"></textarea><br>
     <button type="submit">Отправить</button>
 </form>
 <form id="1" onsubmit="Validator(this.id); return false;">
     <table>
         <tr>
             <td>Имя</td>
-            <td><input name="name" type="text" required/></td>
+            <td><input name="name" type="text"/></td>
         </tr>
         <tr>
             <td>Email</td>
-            <td><input name="email" type="email" required/></td>
+            <td><input name="email" type="email"/></td>
         </tr>
     </table>
     Сообщение:<br>
-    <textarea name="message" required></textarea><br>
+    <textarea name="message"></textarea><br>
     <button type="submit">Отправить</button>
 </form>
 <form id="2" onsubmit="Validator(this.id); return false;">
     <table>
         <tr>
             <td>Имя</td>
-            <td><input name="name" type="text" required/></td>
+            <td><input name="name" type="text"/></td>
         </tr>
         <tr>
             <td>Email</td>
-            <td><input name="email" type="email" required/></td>
+            <td><input name="email" type="email"/></td>
         </tr>
     </table>
     Сообщение:<br>
-    <textarea name="message" required></textarea><br>
+    <textarea name="message"></textarea><br>
     <button type="submit">Отправить</button>
 </form>
 <p id="demo"></p>
@@ -65,28 +65,21 @@
     }
 
     function formSend(id) {
-        let t0 = performance.now(),
-            form = document.getElementsByTagName("form"),
-            formInfo = {
-                formName: form[id].getAttribute('id'),
-                formData: {}
-            };
-        for (let x = 0; x < form[id].elements.length; x++) {
-            if (form[id].elements[x].value !== "") {
-                formInfo.formData[form[id].elements[x].name] = form[id].elements[x].value;
-            }
-        }
+        let t0 = performance.now();
+        let form = new FormData(document.forms[id]),
+            object = {};
+        form.append("formName", id);
+        form.forEach((value, key) => {object[key] = value;});
 
-        let xhr = new XMLHttpRequest(),
-            info = JSON.stringify(formInfo, null, '\t');
+        let json = JSON.stringify(object, null, "\t"),
+            xhr = new XMLHttpRequest();
         xhr.open("GET", "http://test.com", true);
         xhr.setRequestHeader("X-Auth", "123");
-        xhr.send(info);
+        xhr.send(json);
         let t1 = performance.now();
-        console.log(info + "\n" + "Time: " + (t1 - t0))
+        console.log(json + "\n" + "Time: " + (t1 - t0))
     }
 
 </script>
-
 </body>
 </html>
