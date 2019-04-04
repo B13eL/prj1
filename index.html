@@ -3,89 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <script src="formScanner.js"></script>
 </head>
 <body>
 
-<form id="0" onsubmit="Validator(this.id); return false;">
-    <table>
-        <tr>
-            <td>Имя</td>
-            <td><input name="name" type="text" required/></td>
-        </tr>
-        <tr>
-            <td>Email</td>
-            <td><input name="email" type="email" required/></td>
-        </tr>
-    </table>
-    Сообщение:<br>
-    <textarea name="message" required></textarea><br>
-    <button type="submit">Отправить</button>
+<form id="null" name="null">
+    <input id="0name" name="name" type="text"/>
+    <label for="0name">Имя</label>
+    <br>
+    <input id="0email" name="email" type="email"/>
+    <label for="0email">Email</label>
+    <br>
+    <label for="0textarea">Сообщение: </label>
+    <br>
+    <textarea id="0textarea" name="message"></textarea>
+    <br>
+    <button id="0btn" type="submit">Отправить</button>
 </form>
-<form id="1" onsubmit="Validator(this.id); return false;">
-    <table>
-        <tr>
-            <td>Имя</td>
-            <td><input name="name" type="text" required/></td>
-        </tr>
-        <tr>
-            <td>Email</td>
-            <td><input name="email" type="email" required/></td>
-        </tr>
-    </table>
-    Сообщение:<br>
-    <textarea name="message" required></textarea><br>
-    <button type="submit">Отправить</button>
+<form id="one" name="one">
+    <input id="1name" name="name" type="text"/>
+    <label for="1name">Имя</label>
+    <br>
+    <input id="1email" name="email" type="email"/>
+    <label for="1email">Email</label>
+    <br>
+    <label for="1textarea">Сообщение: </label>
+    <br>
+    <textarea id="1textarea" name="message"></textarea>
+    <br>
+    <button id="1btn" type="submit">Отправить</button>
 </form>
-<form id="2" onsubmit="Validator(this.id); return false;">
-    <table>
-        <tr>
-            <td>Имя</td>
-            <td><input name="name" type="text" required/></td>
-        </tr>
-        <tr>
-            <td>Email</td>
-            <td><input name="email" type="email" required/></td>
-        </tr>
-    </table>
-    Сообщение:<br>
-    <textarea name="message" required></textarea><br>
-    <button type="submit">Отправить</button>
+<form id="two" name="two">
+    <input id="2name" name="name" type="text"/>
+    <label for="2name">Имя</label>
+    <br>
+    <input id="2email" name="email" type="email"/>
+    <label for="2email">Email</label>
+    <br>
+    <label for="2textarea">Сообщение: </label>
+    <br>
+    <textarea id="2textarea" name="message"></textarea>
+    <br>
+    <button id="2btn" type="submit">Отправить</button>
 </form>
-<p id="demo"></p>
 
 <script>
-    function Validator(id) {
-        console.log("Validator " + id);
-        let inpObj = document.getElementsByTagName("form");
-        if (!inpObj[id].checkValidity()) {
-            document.getElementById("demo").innerHTML = inpObj[id].validationMessage;
-        } else {
-            formSend(id);
-        }
-    }
-
-    function formSend(id) {
-        let t0 = performance.now(),
-            form = document.getElementsByTagName("form"),
-            formInfo = {
-                formName: form[id].getAttribute('id'),
-                formData: {}
-            };
-        for (let x = 0; x < form[id].elements.length; x++) {
-            if (form[id].elements[x].value !== "") {
-                formInfo.formData[form[id].elements[x].name] = form[id].elements[x].value;
-            }
-        }
-
-        let xhr = new XMLHttpRequest(),
-            info = JSON.stringify(formInfo, null, '\t');
-        xhr.open("GET", "http://test.com", true);
-        xhr.setRequestHeader("X-Auth", "123");
-        xhr.send(info);
-        let t1 = performance.now();
-        console.log(info + "\n" + "Time: " + (t1 - t0))
-    }
-
+addEvent({
+    url:"http://test.com",
+    idUser: "123",
+});
 </script>
 
 </body>
