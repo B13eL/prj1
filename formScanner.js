@@ -1,9 +1,9 @@
-function addEvent(options) {
+function addEvent(callback, options) {
     let formList = document.getElementsByTagName("form");
     for (let i = 0; i < formList.length; i++) {
         formList[i].addEventListener("submit", function () {
-            if (typeof (validator) === "function") {
-                validator(formData, options, formList[i].id);
+            if (typeof (callback) === "function") {
+                callback(formData, options, formList[i].id);
             } else {
                 console.error("validator is not function");
             }
@@ -11,9 +11,9 @@ function addEvent(options) {
     }
 }
 
-function validator(callback, data, id) {
+function validator(callFormData, data, id) {
     console.log("validator");
-    callback(data, id);
+    callFormData(data, id);
 }
 
 function formData(settings, id) {
@@ -37,4 +37,5 @@ function xmlRequest(requestData, options) {
     xhr.open("GET", options.url, true);
     xhr.setRequestHeader("X-Auth", options.idUser);
     xhr.send(requestData);
+    console.log(requestData);
 }
