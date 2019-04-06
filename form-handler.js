@@ -7,7 +7,7 @@ function init(options, validationFunction) {
                     return;
                 }
                 if (validationFunction === undefined) {
-                    console.log("You can add 'validator' function");
+                    console.warn("You can add 'validator' function");
                     formData(formList[i], options)
                 } else {
                     validationFunction(formData);
@@ -42,5 +42,4 @@ function xmlRequest(requestData, options) {
     xhr.open("GET", options['submitted-url'], true);
     xhr.setRequestHeader("X-Auth", options['auth-hash']);
     xhr.send(JSON.stringify(requestData));
-    console.log(JSON.stringify(requestData));
 }
