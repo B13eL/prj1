@@ -3,56 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <script src="formScanner.js"></script>
+    <script src="form-handler.js"></script>
+    <script src="validator.js"></script>
 </head>
 <body>
 
-<form id="null" name="null">
-    <input id="0name" name="name" type="text"/>
-    <label for="0name">Имя</label>
+<form name="zero">
+    <input id="name" name="name" type="text"/>
+    <label for="name">Имя</label>
     <br>
-    <input id="0email" name="email" type="email"/>
-    <label for="0email">Email</label>
+    <input id="email" name="email" type="email"/>
+    <label for="email">Email</label>
     <br>
-    <label for="0textarea">Сообщение: </label>
+    <label for="textarea">Сообщение: </label>
     <br>
-    <textarea id="0textarea" name="message"></textarea>
+    <textarea id="textarea" name="message"></textarea>
     <br>
-    <button id="0btn" type="submit">Отправить</button>
-</form>
-<form id="one" name="one">
-    <input id="1name" name="name" type="text"/>
-    <label for="1name">Имя</label>
-    <br>
-    <input id="1email" name="email" type="email"/>
-    <label for="1email">Email</label>
-    <br>
-    <label for="1textarea">Сообщение: </label>
-    <br>
-    <textarea id="1textarea" name="message"></textarea>
-    <br>
-    <button id="1btn" type="submit">Отправить</button>
-</form>
-<form id="two" name="two">
-    <input id="2name" name="name" type="text"/>
-    <label for="2name">Имя</label>
-    <br>
-    <input id="2email" name="email" type="email"/>
-    <label for="2email">Email</label>
-    <br>
-    <label for="2textarea">Сообщение: </label>
-    <br>
-    <textarea id="2textarea" name="message"></textarea>
-    <br>
-    <button id="2btn" type="submit">Отправить</button>
+    <button id="btn" type="submit">Отправить</button>
 </form>
 
 <script>
-addEvent(validator, {
-    url:"http://test.com",
-    idUser: "123",
-});
-</script>
+    init({
+        'submitted-url': "http://test.com",
+        'auth-hash': "123",
+    }, validator());
 
+</script>
 </body>
 </html>
