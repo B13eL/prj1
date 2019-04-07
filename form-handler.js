@@ -1,5 +1,5 @@
 function init(options, validationFunction) {
-    let formList = document.getElementsByTagName("form");
+    let formList = document.querySelectorAll("form");
     for (let i = 0; i < formList.length; i++) {
         formList[i].addEventListener("submit", function () {
                 if (Object.keys(options).length < 2) {
